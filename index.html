@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Buck Converter Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="header">
+        <h1>🔌 Professional Buck Converter Calculator</h1>
+        <p>Advanced DC-DC Buck Converter Design Tool with Real-time Validation</p>
+    </div>
+
+    <div class="calculator-container">
+        <!-- Input Parameters Section -->
+        <div class="section-card">
+            <h3 class="section-title">
+                <span class="icon">📊</span>
+                Input Parameters
+            </h3>
+
+            <div class="input-group">
+                <label class="input-label">Input Voltage (Vin)</label>
+                <div class="input-row">
+                    <input id="inputVoltage" class="input-field" type="number" placeholder="" step="any">
+                    <select id="inputVoltageUnit" class="unit-selector">
+                        <option value="1">V</option>
+                        <option value="0.001">mV</option>
+                        <option value="1000">kV</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label class="input-label">Output Voltage (Vout)</label>
+                <div class="input-row">
+                    <input id="outputVoltage" class="input-field" type="number" placeholder="" step="any">
+                    <select id="outputVoltageUnit" class="unit-selector">
+                        <option value="1">V</option>
+                        <option value="0.001">mV</option>
+                        <option value="1000">kV</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label class="input-label">Output Current (Iout)</label>
+                <div class="input-row">
+                    <input id="outputCurrent" class="input-field" type="number" placeholder="" step="any">
+                    <select id="outputCurrentUnit" class="unit-selector">
+                        <option value="1">A</option>
+                        <option value="0.001">mA</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label class="input-label">Switching Frequency (Fs)</label>
+                <div class="input-row">
+                    <input id="switchingFrequency" class="input-field" type="number" placeholder="" step="any">
+                    <select id="switchingFrequencyUnit" class="unit-selector">
+                        <option value="1">Hz</option>
+                        <option value="1000">kHz</option>
+                        <option value="1000000">MHz</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label class="input-label">Duty Cycle (D)</label>
+                <div class="input-row">
+                    <input id="dutyCycle" class="input-field" type="number" placeholder="" min="0" max="1" step="0.001">
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button class="btn btn-calculate" onclick="performCalculation()">
+                    ⚡ Calculate
+                </button>
+                <button class="btn btn-clear" onclick="clearAllInputs()">
+                    🗑️ Clear All
+                </button>
+            </div>
+        </div>
+
+        <!-- Component Parameters Section -->
+        <div class="section-card">
+            <h3 class="section-title">
+                <span class="icon">🔧</span>
+                Component Parameters
+            </h3>
+
+            <div class="input-group">
+                <label class="input-label">Inductance (L)</label>
+                <div class="input-row">
+                    <input id="inductance" class="input-field" type="number" placeholder="" step="any">
+                    <select id="inductanceUnit" class="unit-selector">
+                        <option value="1">H</option>
+                        <option value="0.001">mH</option>
+                        <option value="0.000001">µH</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label class="input-label">Capacitance (C)</label>
+                <div class="input-row">
+                    <input id="capacitance" class="input-field" type="number" placeholder="" step="any">
+                    <select id="capacitanceUnit" class="unit-selector">
+                        <option value="1">F</option>
+                        <option value="0.001">mF</option>
+                        <option value="0.000001">µF</option>
+                        <option value="0.000000001">nF</option>
+                        <option value="0.000000000001">pF</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label class="input-label">Inductor Current Ripple (ΔIL)</label>
+                <div class="input-row">
+                    <input id="inductorCurrentRipple" class="input-field" type="number" placeholder="" step="any">
+                    <select id="inductorCurrentRippleUnit" class="unit-selector">
+                        <option value="1">A</option>
+                        <option value="0.001">mA</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label class="input-label">Output Voltage Ripple (ΔVout)</label>
+                <div class="input-row">
+                    <input id="outputVoltageRipple" class="input-field" type="number" placeholder="" step="any">
+                    <select id="outputVoltageRippleUnit" class="unit-selector">
+                        <option value="1">V</option>
+                        <option value="0.001">mV</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label class="input-label">Voltage Ripple Ratio (ΔV/V)</label>
+                <div class="input-row">
+                    <input id="voltageRippleRatio" class="input-field" type="number" placeholder="" step="any">
+                    <select id="voltageRippleRatioUnit" class="unit-selector">
+                        <option value="0.01">%</option>
+                        <option value="1">ratio</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label class="input-label">Current Ripple Ratio (ΔI/I)</label>
+                <div class="input-row">
+                    <input id="currentRippleRatio" class="input-field" type="number" placeholder="" step="any">
+                    <select id="currentRippleRatioUnit" class="unit-selector">
+                        <option value="0.01">%</option>
+                        <option value="1">ratio</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div class="section-card results-container">
+            <h3 class="section-title">
+                <span class="icon">📈</span>
+                Calculated Results & Validation
+            </h3>
+
+            <div id="calculationResults">
+                <div class="empty-state">
+                    <div style="font-size: 3rem; margin-bottom: 10px;">🔍</div>
+                    <p>Enter your parameters and click Calculate to see detailed results...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="ิbuck.js"></script>
+</body>
+
+</html>

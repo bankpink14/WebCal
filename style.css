@@ -1,0 +1,275 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.header p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+}
+
+.calculator-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 25px;
+}
+
+.section-card {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+
+.section-card:hover {
+    transform: translateY(-2px);
+}
+
+.section-title {
+    font-size: 1.4rem;
+    color: #333;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #667eea;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-label {
+    display: block;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+.input-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.input-field {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #e0e6ed;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.unit-selector {
+    min-width: 80px;
+    padding: 12px;
+    border: 2px solid #e0e6ed;
+    border-radius: 8px;
+    background: white;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.unit-selector:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.button-group {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.btn {
+    flex: 1;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-calculate {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: white;
+}
+
+.btn-calculate:hover {
+    background: linear-gradient(135deg, #45a049, #4CAF50);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+}
+
+.btn-clear {
+    background: linear-gradient(135deg, #f44336, #d32f2f);
+    color: white;
+}
+
+.btn-clear:hover {
+    background: linear-gradient(135deg, #d32f2f, #f44336);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(244, 67, 54, 0.4);
+}
+
+.results-container {
+    grid-column: span 2;
+}
+
+.result-item {
+    background: linear-gradient(135deg, #f8f9ff, #e8edff);
+    border: 1px solid #e0e6ed;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.result-item:hover {
+    background: linear-gradient(135deg, #e8edff, #d4e3ff);
+    border-color: #667eea;
+}
+
+.result-label {
+    font-weight: 600;
+    color: #333;
+    font-size: 1rem;
+}
+
+.result-value {
+    font-family: 'Courier New', monospace;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #667eea;
+    background: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #e0e6ed;
+}
+
+.alert {
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    font-weight: 500;
+}
+
+.alert-error {
+    background: linear-gradient(135deg, #ffebee, #ffcdd2);
+    color: #c62828;
+    border-left: 4px solid #f44336;
+}
+
+.alert-warning {
+    background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+    color: #ef6c00;
+    border-left: 4px solid #ff9800;
+}
+
+.alert-info {
+    background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+    color: #1565c0;
+    border-left: 4px solid #2196f3;
+}
+
+.empty-state {
+    text-align: center;
+    color: #888;
+    font-style: italic;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #f8f9ff, #e8edff);
+    border-radius: 10px;
+    border: 2px dashed #ddd;
+}
+
+.formula-section {
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.formula-title {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.formula-item {
+    background: white;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    color: #555;
+    border-left: 3px solid #667eea;
+}
+
+@media (max-width: 1200px) {
+    .calculator-container {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .results-container {
+        grid-column: span 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .calculator-container {
+        grid-template-columns: 1fr;
+    }
+
+    .results-container {
+        grid-column: span 1;
+    }
+
+    .header h1 {
+        font-size: 2rem;
+    }
+}
+
+.icon {
+    font-size: 1.2rem;
+}
